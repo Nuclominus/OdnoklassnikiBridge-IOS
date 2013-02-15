@@ -51,7 +51,7 @@
 // запрос на авторизацию
 // после авторизации сервер возвращет список параметров для составления подписи
 
-- (void)requwestToken:(NSURLRequest *)request{
+- (void)requestToken:(NSURLRequest *)request{
     
     
     NSString *code = [[[[request.URL.absoluteString componentsSeparatedByString:@"?"] objectAtIndex:1] componentsSeparatedByString:@"="] lastObject];
@@ -79,12 +79,6 @@
     
     _appToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"OdnoklassnikiToken"];
     
-    //NSLog(@"TOKEN = %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"OdnoklassnikiToken"]);
-    //NSLog(@"APP TOKEN %@",_appToken);
-    //NSLog(@"Session Key = %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"OdnoklassnikiToken"]);
-    
-    
-   
     NSMutableDictionary *newParams = [NSMutableDictionary dictionaryWithDictionary:params];  // набор параметров
     [newParams setValue:_appPublicKey forKey:@"application_key"]; // публичный ключ приложения
     NSString *signature = [self getSignatureForParams:newParams withAccessToken:_appToken andSecret:_appSecretKey]; // подпись/сигнатура, которой должны быть подписаны все запросы на получение данных

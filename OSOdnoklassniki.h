@@ -41,7 +41,7 @@
 @property (assign,nonatomic) id delegate;
 
 + (NSString*)serializeURL:(NSString *)baseUrl params:(NSDictionary *)params httpMethod:(NSString *)httpMethod;
-- (void)requwestToken:(NSURLRequest *)request;
+- (void)requestToken:(NSURLRequest *)request;
 - (void) requestAPIData:(NSString*)methodReq requestRestAPI:(NSString*)api withParams:(NSDictionary*)params withTagOfRequest:(int)tag;
 - (NSArray*) getDataRequest;
 
